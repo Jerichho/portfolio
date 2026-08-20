@@ -7,6 +7,15 @@ const MAX_REQUESTS = 5;
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
@@ -25,7 +34,18 @@ export async function POST(req: Request) {
     recentRequests.push(now);
     rateLimit.set(ip, recentRequests);
 
-    const { name, email, message } = await req.json();
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+    }
+
+    const { name, email, message } = (body ?? {}) as {
+      name?: unknown;
+      email?: unknown;
+      message?: unknown;
+    };
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "All fields are required" }, { status: 400 });
@@ -34,6 +54,10 @@ export async function POST(req: Request) {
     const sanitizedName = String(name).trim().slice(0, 100);
     const sanitizedEmail = String(email).trim().slice(0, 254);
     const sanitizedMessage = String(message).trim().slice(0, 2000);
+
+    if (!sanitizedName || !sanitizedEmail || !sanitizedMessage) {
+      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
+    }
 
     if (!emailPattern.test(sanitizedEmail)) {
       return NextResponse.json({ error: "Please provide a valid email address" }, { status: 400 });
@@ -52,6 +76,10 @@ export async function POST(req: Request) {
       },
     });
 
+    const htmlName = escapeHtml(sanitizedName);
+    const htmlEmail = escapeHtml(sanitizedEmail);
+    const htmlMessage = escapeHtml(sanitizedMessage).replaceAll("\n", "<br>");
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
@@ -66,12 +94,12 @@ Time: ${new Date().toISOString()}
       `.trim(),
       html: `
 <h3>New Contact Form Submission</h3>
-<p><strong>Name:</strong> ${sanitizedName}</p>
-<p><strong>Email:</strong> ${sanitizedEmail}</p>
+<p><strong>Name:</strong> ${htmlName}</p>
+<p><strong>Email:</strong> ${htmlEmail}</p>
 <p><strong>Message:</strong></p>
-<p>${sanitizedMessage.replace(/\n/g, "<br>")}</p>
+<p>${htmlMessage}</p>
 <hr>
-<p><small>IP Address: ${ip}</small></p>
+<p><small>IP Address: ${escapeHtml(ip)}</small></p>
 <p><small>Time: ${new Date().toISOString()}</small></p>
       `.trim(),
     };

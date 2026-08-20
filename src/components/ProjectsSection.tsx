@@ -11,7 +11,7 @@ export default function ProjectsSection() {
           title="Projects"
           subtitle="Selected coursework and project work with an emphasis on what I built and how."
         />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-w-0">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
@@ -22,7 +22,7 @@ export default function ProjectsSection() {
             <h3 className="text-2xl font-semibold text-center text-gray-900 mb-8">
               Additional Technical Work
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto min-w-0">
               {additionalProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}

@@ -9,7 +9,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <article
-      className={`flex flex-col h-full bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-shadow hover:shadow-xl focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 ${
+      className={`flex flex-col h-full min-w-0 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-shadow hover:shadow-xl focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 ${
         project.frontendFocus ? "ring-1 ring-blue-100" : ""
       }`}
     >
@@ -25,8 +25,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             Frontend-focused work
           </p>
         ) : null}
-        <h3 className="text-xl font-semibold text-gray-900">{project.title}</h3>
-        <p className="mt-2 text-gray-600 text-sm leading-relaxed">{project.description}</p>
+        <h3 className="text-xl font-semibold text-gray-900 break-words">{project.title}</h3>
+        <p className="mt-2 text-gray-600 text-sm leading-relaxed break-words">{project.description}</p>
       </div>
 
       <div className="flex flex-col flex-1 p-6">
@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <h4 className="text-sm font-semibold text-gray-800 mb-2">
               {project.frontendFocus ? "My UI contributions" : "Highlights"}
             </h4>
-            <ul className="space-y-1.5 text-sm text-gray-600 list-disc list-inside">
+            <ul className="space-y-1.5 text-sm text-gray-600 list-disc pl-4 break-words">
               {project.highlights.map((item) => (
                 <li key={item}>{item}</li>
               ))}

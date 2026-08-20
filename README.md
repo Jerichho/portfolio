@@ -193,6 +193,7 @@ Topics include
 
 ### Testing & Developer Tooling
 
+<<<<<<< HEAD
 - JUnit
 - Maven
 - Playwright
@@ -203,6 +204,11 @@ Topics include
 - CI/CD
 
 ### Cloud & Infrastructure
+=======
+3. **Resume**
+
+   The Resume button links to `public/resume.pdf`. Keep that filename so the production URL stays `/resume.pdf`.
+>>>>>>> cbf6562 (Prepare for deployment)
 
 - AWS
 - Docker

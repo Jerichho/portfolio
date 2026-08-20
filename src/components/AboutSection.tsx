@@ -18,10 +18,10 @@ export default function AboutSection() {
           </p>
           <p>
             On the frontend, I have spent significant time on UI structure, navigation,
-            forms, and layout work in project settings. On the backend, I have worked with
-            FastAPI, PostgreSQL, authentication, and AI integrations. I also have coursework
-            and project experience in software testing, distributed systems, and systems-level
-            programming.
+            forms, and layout work in project settings, including a Jinja2 teacher dashboard.
+            On the backend, I have worked with FastAPI, SQLAlchemy, SQLite and PostgreSQL,
+            authentication, and AI integrations. I also have coursework and project experience
+            in software testing, distributed systems, and systems-level programming.
           </p>
           <p>
             I regularly use AI-assisted development tools such as Cursor, GitHub Copilot, and

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { isResumeAvailable } from "@/lib/resume";
 
 const GITHUB_URL = "https://github.com/Jerichho";
 const LINKEDIN_URL = "https://www.linkedin.com/in/jericho-guiang/";
@@ -11,8 +10,6 @@ const secondaryButtonClass =
   "inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-full hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-colors motion-safe:transform motion-safe:hover:scale-105 shadow-md";
 
 export default function Hero() {
-  const resumeAvailable = isResumeAvailable();
-
   return (
     <section
       id="home"
@@ -42,7 +39,8 @@ export default function Hero() {
           Jericho Guiang
         </h1>
         <p className="text-xl sm:text-2xl text-gray-800 font-medium mb-4">
-          Software Engineer building backend, AI-powered, and modern web applications.
+          Recent Computer Science graduate building backend, AI-powered, and modern web
+          applications.
         </p>
         <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
           B.S. in Computer Science from DePaul University with a Software Development
@@ -71,19 +69,14 @@ export default function Hero() {
           >
             LinkedIn
           </a>
-          {resumeAvailable ? (
-            <a href="/resume.pdf" className={secondaryButtonClass} download>
-              Resume
-            </a>
-          ) : (
-            <span
-              className={`${secondaryButtonClass} opacity-60 cursor-not-allowed`}
-              title="Add public/resume.pdf to enable this download"
-              aria-disabled="true"
-            >
-              Resume (add PDF)
-            </span>
-          )}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={secondaryButtonClass}
+          >
+            Resume
+          </a>
         </div>
       </div>
     </section>

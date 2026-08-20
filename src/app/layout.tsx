@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const siteUrl = getSiteUrl();
 const siteDescription =
-  "Portfolio of Jericho Guiang, a software engineer focused on frontend and backend development, AI-powered applications, and reliable user-focused software.";
+  "Portfolio of Jericho Guiang, a recent Computer Science graduate building backend, full-stack, and AI-powered applications.";
 
 export const metadata: Metadata = {
   title: "Jericho Guiang | Software Engineer",
@@ -44,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} text-gray-900 min-h-screen`}>
+      <body className={`${inter.className} text-gray-900 min-h-screen overflow-x-hidden`}>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-blue-700 focus:ring-2 focus:ring-blue-500 focus:rounded-md"

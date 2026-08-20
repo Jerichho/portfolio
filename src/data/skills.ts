@@ -6,7 +6,7 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
   {
     name: "Languages",
-    items: ["Python", "Java", "JavaScript", "SQL", "C", "C++", "R"],
+    items: ["Python", "Java", "JavaScript", "TypeScript", "SQL", "C", "C++", "R"],
   },
   {
     name: "Frontend",
@@ -14,11 +14,11 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: "Backend",
-    items: ["FastAPI", "Node.js", "Express", "REST APIs", "SQLAlchemy"],
+    items: ["FastAPI", "Node.js", "REST APIs", "SQLAlchemy"],
   },
   {
     name: "Databases",
-    items: ["PostgreSQL", "MongoDB", "MySQL", "pgvector"],
+    items: ["SQLite", "PostgreSQL", "pgvector"],
   },
   {
     name: "Testing / Developer Tooling",
