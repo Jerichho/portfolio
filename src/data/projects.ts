@@ -35,6 +35,7 @@ export const featuredProjects: Project[] = [
       "PostgreSQL",
       "Together.ai",
     ],
+    githubUrl: "https://github.com/Jerichho/capstone-1-9",
     frontendFocus: true,
     featured: true,
   },
@@ -59,6 +60,7 @@ export const featuredProjects: Project[] = [
       "RAG",
       "GitHub Actions",
     ],
+    githubUrl: "https://github.com/Jerichho/Enterprise-Knowledge-Management-Platform-",
     featured: true,
   },
   {
