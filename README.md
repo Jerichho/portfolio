@@ -8,7 +8,7 @@ The portfolio serves as a central hub for my technical work, highlighting real p
 
 ## Live Website
 
-[>(https://jerichoguiang.vercel.app/#home)
+(https://jerichoguiang.vercel.app/#home)
 
 ---
 
